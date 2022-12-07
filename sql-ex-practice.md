@@ -13,6 +13,41 @@
 + [13](#13)
 + [14](#14)
 + [15](#15)
++ [16](#16)
++ [17](#17)
++ [18](#18)
++ [19](#19)
++ [20](#20)
++ [21](#21)
++ [22](#22)
++ [23](#23)
++ [24](#24)
++ [25](#25)
++ [26](#26)
++ [27](#27)
++ [28](#28)
++ [29](#29)
++ [30](#30)
++ [31](#31)
++ [32](#32)
++ [33](#33)
++ [34](#34)
++ [35](#35)
++ [36](#36)
++ [37](#37)
++ [38](#38)
++ [39](#39)
++ [40](#40)
++ [41](#41)
++ [42](#42)
++ [43](#43)
++ [44](#44)
++ [45](#45)
++ [46](#46)
++ [47](#47)
++ [48](#48)
++ [49](#49)
++ [50](#50)
 
 
 ## 1
@@ -192,4 +227,126 @@ SELECT hd
 FROM PC
 GROUP BY hd
 HAVING COUNT(hd) >= 2
+```
+
+## 16
+
+https://www.sql-ex.ru/learn_exercises.php?LN=16
+
+```sql
+SELECT DISTINCT A.model AS model, B.model AS model, A.speed As speed, A.ram As ram 
+FROM PC AS A, PC B 
+WHERE A.speed = B.speed AND A.ram = B.ram AND A.model > B.model
+```
+
+## 17
+
+https://www.sql-ex.ru/learn_exercises.php?LN=17
+
+```sql
+
+```
+
+## 18
+
+https://www.sql-ex.ru/learn_exercises.php?LN=18
+
+```sql
+
+```
+
+## 19
+
+https://www.sql-ex.ru/learn_exercises.php?LN=19
+
+```sql
+
+```
+
+## 20
+
+https://www.sql-ex.ru/learn_exercises.php?LN=20
+
+```sql
+
+```
+
+## 21
+
+https://www.sql-ex.ru/learn_exercises.php?LN=21
+
+```sql
+
+```
+
+## 22
+
+https://www.sql-ex.ru/learn_exercises.php?LN=22
+
+```sql
+
+```
+
+## 23
+
+https://www.sql-ex.ru/learn_exercises.php?LN=23
+
+```sql
+
+```
+
+## 24
+
+https://www.sql-ex.ru/learn_exercises.php?LN=24
+
+```sql
+
+```
+
+## 25
+
+https://www.sql-ex.ru/learn_exercises.php?LN=25
+
+```sql
+
+```
+
+## 26
+
+https://www.sql-ex.ru/learn_exercises.php?LN=26
+
+```sql
+
+```
+
+## 27
+
+https://www.sql-ex.ru/learn_exercises.php?LN=27
+
+```sql
+
+```
+
+## 28
+
+https://www.sql-ex.ru/learn_exercises.php?LN=28
+
+```sql
+
+```
+
+## 29
+
+https://www.sql-ex.ru/learn_exercises.php?LN=29
+
+```sql
+
+```
+
+## 30
+
+https://www.sql-ex.ru/learn_exercises.php?LN=30
+
+```sql
+
 ```
