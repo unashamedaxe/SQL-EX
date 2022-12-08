@@ -244,7 +244,9 @@ WHERE A.speed = B.speed AND A.ram = B.ram AND A.model > B.model
 https://www.sql-ex.ru/learn_exercises.php?LN=17
 
 ```sql
-
+SELECT DISTINCT type, model, speed
+FROM Laptop, (SELECT type FROM Product) AS ProductType
+WHERE speed < ALL (SELECT speed FROM PC) and type = 'laptop'
 ```
 
 ## 18
