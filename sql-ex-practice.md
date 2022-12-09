@@ -254,7 +254,12 @@ WHERE speed < ALL (SELECT speed FROM PC) and type = 'laptop'
 https://www.sql-ex.ru/learn_exercises.php?LN=18
 
 ```sql
-
+SELECT DISTINCT A.maker, B.price
+FROM Product A JOIN
+ Printer B on A.model = B.model 
+WHERE B.price = (SELECT MIN(price)
+ FROM Printer 
+ WHERE color = 'y') and B.color = 'y'
 ```
 
 ## 19
@@ -262,7 +267,9 @@ https://www.sql-ex.ru/learn_exercises.php?LN=18
 https://www.sql-ex.ru/learn_exercises.php?LN=19
 
 ```sql
-
+SELECT A.maker, AVG(B.screen)
+FROM Product as A JOIN Laptop as B ON A.model = B.model
+GROUP BY maker
 ```
 
 ## 20
@@ -270,7 +277,11 @@ https://www.sql-ex.ru/learn_exercises.php?LN=19
 https://www.sql-ex.ru/learn_exercises.php?LN=20
 
 ```sql
-
+SELECT DISTINCT Maker, COUNT(model)
+FROM Product
+WHERE type = 'PC'
+GROUP BY Maker
+HAVING COUNT(model)>=3
 ```
 
 ## 21
@@ -278,7 +289,9 @@ https://www.sql-ex.ru/learn_exercises.php?LN=20
 https://www.sql-ex.ru/learn_exercises.php?LN=21
 
 ```sql
-
+SELECT Product.maker, MAX(PC.price)
+FROM Product JOIN PC ON Product.model = PC.model
+GROUP BY Product.maker
 ```
 
 ## 22
@@ -286,7 +299,10 @@ https://www.sql-ex.ru/learn_exercises.php?LN=21
 https://www.sql-ex.ru/learn_exercises.php?LN=22
 
 ```sql
-
+SELECT speed, AVG(price)
+FROM PC
+WHERE speed > 600
+GROUP BY speed
 ```
 
 ## 23
