@@ -48,6 +48,26 @@
 + [48](#48)
 + [49](#49)
 + [50](#50)
++ [51](#51)
++ [52](#52)
++ [53](#53)
++ [54](#54)
++ [55](#55)
++ [56](#56)
++ [57](#57)
++ [58](#58)
++ [59](#59)
++ [60](#60)
++ [61](#61)
++ [62](#62)
++ [63](#63)
++ [64](#64)
++ [65](#65)
++ [66](#66)
++ [67](#67)
++ [68](#68)
++ [69](#69)
++ [70](#70)
 
 
 ## 1
@@ -828,52 +848,133 @@ LEFT JOIN (
 GROUP BY c.class;
 ```
 
-## 50
+## 57
 
-https://www.sql-ex.ru/learn_exercises.php?LN=50
+https://www.sql-ex.ru/learn_exercises.php?LN=57
 
 ```sql
-
+SELECT class, COUNT(ship) count_sunked
+FROM (
+	SELECT name, class 
+	FROM ships
+	UNION
+	SELECT ship, ship
+	FROM outcomes
+) t LEFT JOIN outcomes ON name = ship AND result = 'sunk'
+GROUP BY class
+HAVING COUNT(ship) > 0 AND COUNT(*) > 2
 ```
 
-## 50
+## 58
 
-https://www.sql-ex.ru/learn_exercises.php?LN=50
+https://www.sql-ex.ru/learn_exercises.php?LN=58
 
 ```sql
-
+SELECT m, t,
+CAST(100.0*cc/cc1 AS NUMERIC(5,2))
+FROM (
+	SELECT m, t, sum(c) cc 
+	FROM (
+		SELECT distinct maker m, 'PC' t, 0 c 
+		FROM product
+		UNION ALL
+		SELECT distinct maker, 'Laptop', 0 
+		FROM product
+		UNION ALL
+		SELECT distinct maker, 'Printer', 0 
+		FROM product
+		UNION ALL
+		SELECT maker, type, count(*) 
+		FROM product
+		GROUP BY maker, type
+	) AS tt
+	GROUP BY m, t
+) tt1 JOIN (
+	SELECT maker, count(*) cc1 
+	FROM product 
+	GROUP BY maker
+) tt2 ON m=maker
 ```
 
-## 50
+## 59
 
-https://www.sql-ex.ru/learn_exercises.php?LN=50
+https://www.sql-ex.ru/learn_exercises.php?LN=59
 
 ```sql
-
+SELECT c1, c2- (
+	CASE WHEN o2 is null 
+	THEN 0
+	ELSE o2
+	END
+)
+FROM (
+	SELECT point c1, sum(inc) c2 
+	FROM income_o
+	GROUP BY point
+) AS t1 LEFT JOIN (
+	SELECT point o1, sum(out) o2 
+	FROM outcome_o
+	GROUP BY point
+) as t2
+on c1=o1
 ```
 
-## 50
+## 60
 
-https://www.sql-ex.ru/learn_exercises.php?LN=50
+https://www.sql-ex.ru/learn_exercises.php?LN=60
 
 ```sql
-
+SELECT c1, c2- (
+	CASE WHEN o2 is null 
+	THEN 0
+	ELSE o2
+	END
+)
+FROM (
+	SELECT point c1, sum(inc) c2 
+	FROM income_o
+	WHERE date<'2001-04-15'
+	GROUP BY point
+) AS t1 LEFT JOIN (
+	SELECT point o1, sum(out) o2 
+	FROM outcome_o
+	WHERE date<'2001-04-15'
+	GROUP BY point
+) AS t2 ON c1=o1
 ```
 
-## 50
+## 61
 
-https://www.sql-ex.ru/learn_exercises.php?LN=50
+https://www.sql-ex.ru/learn_exercises.php?LN=61
 
 ```sql
-
+SELECT sum(i) 
+FROM (
+	SELECT point, sum(inc) as i 
+	FROM income_o
+	GROUP BY point
+	UNION
+	SELECT point, -sum(out) as i 
+	FROM outcome_o
+	GROUP BY point
+) AS t
 ```
 
-## 50
+## 62
 
-https://www.sql-ex.ru/learn_exercises.php?LN=50
+https://www.sql-ex.ru/learn_exercises.php?LN=62
 
 ```sql
-
+SELECT (
+	SELECT sum(inc) 
+	FROM Income_o 
+	WHERE date<'2001-04-15'
+)
+- (
+	SELECT sum(out) 
+	FROM Outcome_o 
+	WHERE date<'2001-04-15'
+) AS remain
 ```
 
 ## 50
